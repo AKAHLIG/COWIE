@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class DragRacingGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to Tokyo Night Drag Racing!");
+        System.out.println("Get ready to race through the neon streets.");
+
+        // Initialize player stats (e.g., car speed, nitro level, etc.)
+        int playerSpeed = 0;
+        int nitroLevel = 100;
+
+        // Game loop
+        while (true) {
+            System.out.println("\nChoose an action:");
+            System.out.println("1. Accelerate");
+            System.out.println("2. Use Nitro");
+            System.out.println("3. Exit");
+
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    // Accelerate: Increase player speed
+                    playerSpeed += 10;
+                    System.out.println("You accelerate! Current speed: " + playerSpeed + " mph");
+                    break;
+                case 2:
+                    // Use Nitro: Boost speed temporarily
+                    if (nitroLevel >= 20) {
+                        playerSpeed += 30;
+                        nitroLevel -= 20;
+                        System.out.println("Nitro boost! Current speed: " + playerSpeed + " mph");
+                    } else {
+                        System.out.println("Not enough nitro!");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Thanks for playing! Exiting...");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+
+            // Check if player wins (e.g., reaches a certain speed)
+            if (playerSpeed >= 200) {
+                System.out.println("Congratulations! You won the race!");
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+}
